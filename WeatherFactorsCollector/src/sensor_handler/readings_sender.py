@@ -40,10 +40,9 @@ class ReadingsSender:
 
         if response.status_code is 401:
             self.__logger.log_error("Invalid credentials provided to environment configuration")
-            return
-
-        content = response.json()
-        return f"{content['token_type']} {content['access_token']}"
+        else:
+            content = response.json()
+            return f"{content['token_type']} {content['access_token']}"
 
     def __send_readings(self, readings: str, bearer_token: str) -> int:
         response = requests.post(
