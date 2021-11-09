@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='WeatherFactorsCollector',
     version='0.1.1-alpha',
-    packages=['src', 'src.http_client', 'src.logging_service', 'src.sensor_handler',
+    packages=['src', 'src.logging_service', 'src.sensor_handler',
               'src.environment_variables_settings'],
     url='',
     license='Apache',
