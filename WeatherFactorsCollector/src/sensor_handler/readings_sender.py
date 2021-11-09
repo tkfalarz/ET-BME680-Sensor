@@ -1,6 +1,6 @@
 import requests
 
-from src.environment_variables_settings import oauth, external_api
+from src.environment_variables_settings import oauth
 from src.logging_service import logging_service
 from urllib.parse import urljoin
 
