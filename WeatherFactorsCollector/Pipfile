@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 bme680 = "*"
+requests = "*"
 
 [dev-packages]
 

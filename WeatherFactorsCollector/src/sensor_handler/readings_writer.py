@@ -1,13 +1,11 @@
 import pathlib
 from datetime import datetime
 
-READINGS_DIRECTORY_NAME = "readings"
 
-
-class SensorReadingsWriter:
+class ReadingsWriter:
     def __init__(self):
         readings_filename = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.txt"
-        readings_dir_path = pathlib.Path(f"{pathlib.Path(__file__).parent.parent}/{READINGS_DIRECTORY_NAME}")
+        readings_dir_path = pathlib.Path(f"{pathlib.Path(__file__).parent.parent}/readings")
 
         self.__absolute_file_path = self.__try_create_file(readings_dir_path, readings_filename)
 

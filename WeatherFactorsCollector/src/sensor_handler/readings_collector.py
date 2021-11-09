@@ -5,7 +5,7 @@ from subprocess import PIPE, Popen
 from time import sleep
 
 import bme680
-from logging_service import logging_service
+from ..logging_service import logging_service
 
 FACTOR = 40.0
 SMOOTH_SIZE = 10
@@ -16,9 +16,15 @@ HUMIDITY_BASELINE = 40.0
 HUMIDITY_WEIGHTING = 0.25
 
 
-class WeatherFactorsCollector:
-    def __init__(self, sensor: bme680.BME680):
+class ReadingsCollector:
+    def __init__(self, sensor: bme680.BME680, device_name: str):
+        if sensor is None:
+            raise ValueError("Sensor not exist")
+        if device_name is None:
+            raise ValueError("Device name not exist")
+
         self.__sensor = sensor
+        self.__device_name = device_name
 
         self.__gas_resistance_warm_up_data = []
         self.__gas_baseline = None
@@ -56,7 +62,7 @@ class WeatherFactorsCollector:
             self.__logger.log_exception(ex)
             sys.exit()
 
-    def collect_chip_readings(self, controller_name):
+    def collect_chip_readings(self):
         if self.__sensor.data.heat_stable is False \
                 or self.__sensor.get_sensor_data() is None\
                 or self.__gas_baseline is None:
@@ -69,7 +75,7 @@ class WeatherFactorsCollector:
         return json.dumps(
             {
                 "timestamp": timestamp.strftime("%Y-%m-%dT%H:%M:%S"),
-                "controller": controller_name,
+                "device_name": self.__device_name,
                 "temperature": "{0:.2f}".format(self.__get_sensor_compensated_temperature()),
                 "iaq": "{0:.2f}".format(self.__get_iaq_index(humidity)),
                 "pressure": "{0:.2f}".format(self.__sensor.data.pressure),
