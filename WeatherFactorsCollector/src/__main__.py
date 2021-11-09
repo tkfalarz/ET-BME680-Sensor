@@ -10,7 +10,7 @@ def main():
     oauth_settings = oauth.OAuth()
     api_settings = external_api.ExternalApi()
     device_settings = device.Device()
-    if not oauth_settings.is_valid() and api_settings.is_valid() and device_settings.is_valid():
+    if not (oauth_settings.is_valid() and api_settings.is_valid() and device_settings.is_valid()):
         exit()
 
     logger = logging_service.LoggingService(__name__)

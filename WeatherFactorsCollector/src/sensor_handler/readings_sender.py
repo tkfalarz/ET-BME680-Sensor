@@ -10,7 +10,7 @@ class ReadingsSender:
         if oauth_settings is None:
             raise ValueError("Value oauth_settings not exist")
         if web_api_url is None:
-            raise ValueError("Value api_settings not exist")
+            raise ValueError("Value web_api_url not exist")
 
         self.__oauth_settings = oauth_settings
         self.__web_api_url = urljoin(web_api_url, "api/Readings")
