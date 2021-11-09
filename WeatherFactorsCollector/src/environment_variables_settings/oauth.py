@@ -1,6 +1,6 @@
 import os
 
-from ..logging_service import logging_service
+from src.logging_service import logging_service
 
 OAUTH_AUDIENCE = "WEB_API_OAUTH_AUDIENCE"
 OAUTH_TOKEN_URL = "WEB_API_OAUTH_TOKEN_URL"

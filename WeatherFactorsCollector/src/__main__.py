@@ -15,7 +15,7 @@ def main():
 
     logger = logging_service.LoggingService(__name__)
     writer = readings_writer.ReadingsWriter()
-    sender = readings_sender.ReadingsSender(oauth_settings, api_settings)
+    sender = readings_sender.ReadingsSender(oauth_settings, api_settings.api_url)
 
     try:
         logger.log_info("Connecting with BME680...")

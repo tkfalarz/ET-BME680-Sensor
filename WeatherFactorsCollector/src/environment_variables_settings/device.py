@@ -1,6 +1,6 @@
 import os
 
-from ..logging_service import logging_service
+from src.logging_service import logging_service
 
 DEVICE_NAME = "DEVICE_NAME"
 SENSOR_NAME = "SENSOR_NAME"

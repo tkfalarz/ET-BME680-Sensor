@@ -5,7 +5,7 @@ from subprocess import PIPE, Popen
 from time import sleep
 
 import bme680
-from ..logging_service import logging_service
+from src.logging_service import logging_service
 
 FACTOR = 40.0
 SMOOTH_SIZE = 10
