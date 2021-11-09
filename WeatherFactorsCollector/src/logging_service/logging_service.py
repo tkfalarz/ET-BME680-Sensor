@@ -28,17 +28,17 @@ class LoggingService:
         self.__logger.addHandler(file_handler)
         self.__logger.addHandler(stream_handler)
 
-    def log_debug(self, message: str):
+    def log_debug(self, message):
         self.__logger.debug(message)
 
-    def log_info(self, message: str):
+    def log_info(self, message):
         self.__logger.info(message)
 
-    def log_warning(self, message: str):
+    def log_warning(self, message):
         self.__logger.warning(message)
 
-    def log_error(self, message: str):
+    def log_error(self, message):
         self.__logger.error(message)
 
-    def log_exception(self, message: str):
+    def log_exception(self, message):
         self.__logger.exception(message)

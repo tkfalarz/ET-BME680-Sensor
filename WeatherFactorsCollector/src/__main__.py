@@ -32,12 +32,15 @@ def main():
             time.sleep(60)
 
     except ValueError as value_error:
-        logger.log_error(f"{value_error}")
+        logger.log_error(value_error)
+
     except (RuntimeError, IOError) as error:
         logger.log_error("Failed to connect with BME680. Terminating...")
-        logger.log_exception(f"{error}")
+        logger.log_exception(error)
+
     except BaseException as exception:
-        logger.log_exception(f"{exception}")
+        logger.log_exception(exception)
+
     finally:
         exit()
 
