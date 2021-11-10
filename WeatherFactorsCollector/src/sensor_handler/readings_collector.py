@@ -1,4 +1,3 @@
-import json
 import sys
 from datetime import datetime
 from subprocess import PIPE, Popen
@@ -72,16 +71,15 @@ class ReadingsCollector:
         humidity = self.__sensor.data.humidity
         timestamp = datetime.now()
         self.__logger.log_info("Weather factors collection...")
-        return json.dumps(
-            {
-                "timestamp": timestamp.strftime("%Y-%m-%dT%H:%M:%S"),
-                "deviceName": self.__device_name,
-                "temperature": "{0:.2f}".format(self.__get_sensor_compensated_temperature()),
-                "airQualityIndex": "{0:.2f}".format(self.__get_iaq_index(humidity)),
-                "pressure": "{0:.2f}".format(self.__sensor.data.pressure),
-                "humidity": "{0:.2f}".format(humidity)
-            }
-        )
+
+        return {
+            "timestamp": timestamp.strftime("%Y-%m-%dT%H:%M:%S"),
+            "deviceName": self.__device_name,
+            "temperature": "{0:.2f}".format(self.__get_sensor_compensated_temperature()),
+            "airQualityIndex": "{0:.2f}".format(self.__get_iaq_index(humidity)),
+            "pressure": "{0:.2f}".format(self.__sensor.data.pressure),
+            "humidity": "{0:.2f}".format(humidity)
+        }
 
     def __get_sensor_compensated_temperature(self):
         raw_temp = self.__sensor.data.temperature

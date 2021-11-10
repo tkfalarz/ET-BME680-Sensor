@@ -1,5 +1,6 @@
 import time
 import bme680
+import json
 
 from logging_service import logging_service
 from sensor_handler import readings_sender, readings_writer, readings_collector
@@ -27,7 +28,7 @@ def main():
 
         while True:
             readings = collector.collect_chip_readings()
-            writer.save_to_file(readings)
+            writer.save_to_file(json.dumps(readings))
             sender.send_readings(readings)
             time.sleep(60)
 
