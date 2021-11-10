@@ -15,7 +15,7 @@ class ReadingsSender:
         self.__oauth_settings = oauth_settings
         self.__web_api_url = urljoin(web_api_url, "api/Readings")
         self.__bearer_token = ""
-        self.__logger = logging_service.LoggingService(__name__)
+        self.__logger = logging_service(__name__)
 
     def send_readings(self, readings: str):
         response_status_code = self.__send_readings(readings, self.__bearer_token)
@@ -23,6 +23,8 @@ class ReadingsSender:
         if response_status_code is 401:
             self.__bearer_token = self.__request_for_bearer_token()
             response_status_code = self.__send_readings(readings, self.__bearer_token)
+
+        self.__logger.log_info(response.status_code)
 
         if response_status_code in range(401, 499):
             self.__logger.log_error("Something went wrong with the request.")
@@ -45,11 +47,9 @@ class ReadingsSender:
             return f"{content['token_type']} {content['access_token']}"
 
     def __send_readings(self, readings: str, bearer_token: str) -> int:
-        response = requests.post(
-            self.__web_api_url,
-            json=readings,
-            headers={
-                "Authorization": bearer_token
-            })
+        headers = CaseInsensitiveDict()
+        headers["Accept"] = "application/json"
+        headers["Authorization"] = bearer_token
+        response = requests.post(self.__web_api_url, json=readings, headers=headers)
 
         return response.status_code
