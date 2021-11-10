@@ -25,7 +25,7 @@ class ReadingsSender:
             self.__bearer_token = self.__request_for_bearer_token()
             response_status_code = self.__send_readings(readings, self.__bearer_token)
 
-        self.__logger.log_info(response.status_code)
+        self.__logger.log_info(response_status_code)
 
         if response_status_code in range(401, 499):
             self.__logger.log_error("Something went wrong with the request.")
