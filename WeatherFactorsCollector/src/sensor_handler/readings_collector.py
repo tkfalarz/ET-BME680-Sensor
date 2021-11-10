@@ -75,9 +75,9 @@ class ReadingsCollector:
         return json.dumps(
             {
                 "timestamp": timestamp.strftime("%Y-%m-%dT%H:%M:%S"),
-                "device_name": self.__device_name,
+                "deviceMame": self.__device_name,
                 "temperature": "{0:.2f}".format(self.__get_sensor_compensated_temperature()),
-                "iaq": "{0:.2f}".format(self.__get_iaq_index(humidity)),
+                "airQualityIndex": "{0:.2f}".format(self.__get_iaq_index(humidity)),
                 "pressure": "{0:.2f}".format(self.__sensor.data.pressure),
                 "humidity": "{0:.2f}".format(humidity)
             }
