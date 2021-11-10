@@ -15,7 +15,7 @@ class ReadingsSender:
         self.__oauth_settings = oauth_settings
         self.__web_api_url = urljoin(web_api_url, "api/Readings")
         self.__bearer_token = ""
-        self.__logger = logging_service(__name__)
+        self.__logger = logging_service.LoggingService(__name__)
 
     def send_readings(self, readings: str):
         response_status_code = self.__send_readings(readings, self.__bearer_token)
