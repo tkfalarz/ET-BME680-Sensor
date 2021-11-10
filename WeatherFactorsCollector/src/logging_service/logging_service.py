@@ -16,7 +16,7 @@ class LoggingService:
             logs_dir_path.mkdir()
 
         file_handler = logging.FileHandler(f"{logs_dir_path}/{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}-logs.log")
-        file_handler.setLevel(logging.DEBUG)
+        file_handler.setLevel(logging.NOTSET)
 
         stream_handler = logging.StreamHandler()
         stream_handler.setLevel(logging.ERROR)

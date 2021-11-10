@@ -32,7 +32,7 @@ class ReadingsSender:
         elif response_status_code in range(500, 599):
             self.__logger.log_error("Something went wrong with the server")
 
-    def __request_for_bearer_token(self):
+    def __request_for_bearer_token(self) -> str:
         request_content = {
             "client_id": self.__oauth_settings.client_id,
             "client_secret": self.__oauth_settings.client_secret,
@@ -45,12 +45,12 @@ class ReadingsSender:
             self.__logger.log_error("Invalid credentials provided to environment configuration")
         else:
             content = response.json()
-            return f"{content['token_type']} {content['access_token']}"
+            return content['access_token']
 
     def __send_readings(self, readings: str, bearer_token: str) -> int:
         headers = CaseInsensitiveDict()
         headers["Accept"] = "application/json"
-        headers["Authorization"] = bearer_token
+        headers["Authorization"] = f"Bearer {bearer_token}"
         response = requests.post(self.__web_api_url, json=readings, headers=headers)
 
         return response.status_code
