@@ -30,7 +30,7 @@ def main():
             readings = collector.collect_chip_readings()
             writer.save_to_file(json.dumps(readings))
             sender.send_readings(readings)
-            time.sleep(60)
+            time.sleep(1800)
 
     except ValueError as value_error:
         logger.log_error(value_error)
