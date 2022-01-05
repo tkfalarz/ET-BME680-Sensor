@@ -2,7 +2,7 @@
 
 **What the script is?**
 
-This script uses bme 680 sensor to gather some weather metrics. It sends the data to the particular [.NET API](#) by http protocol using M2M authentication. This project was created for my Engineering Thesis purposes and this is rather a showdown of my abilities than a real production solution. At this stage, be aware it can have some vulnerabilities (e.g.: using http instead of https protocol). Feel free to contribute or suggest some tips. Have a good day :)
+This script uses bme 680 sensor to gather some weather metrics. It sends the data to the particular [.NET API](https://github.com/tkfalarz/ET-Dotnet-API) by http protocol using M2M authentication. This project was created for my Engineering Thesis purposes and this is rather a showdown of my abilities than a real production solution. At this stage, be aware it can have some vulnerabilities (e.g.: using http instead of https protocol, no code injections expected ;) ). Feel free to contribute or suggest some tips. Have a good day :)
 
 **Prerequisites:**
 - Raspberry Pi device with network card included
