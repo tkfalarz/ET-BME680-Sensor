@@ -13,6 +13,7 @@ This script uses bme 680 sensor to gather some weather metrics. It sends the dat
 **1. Connect your sensor with Raspberry Pi**
 
 Here is an example how to connect sensor to the Rasbperry Pi Zero W device. You can find the device pinout on the internet.
+
 ![pi-and-bme680_bb](https://user-images.githubusercontent.com/9446202/148239576-1c41e496-e776-43a8-97e4-2b6593195a8e.jpg)
 
 
