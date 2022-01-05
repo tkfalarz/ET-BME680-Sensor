@@ -28,7 +28,7 @@ https://github.com/tkfalarz/ET-BME680-Sensor.git
 
 Open `/etc/rc.local` and add required environment variables. Use `nano` or `vim`.
 
-Important! The device needs M2M authentication, so it is neeed to have security platform configured at first, e.g.: `https://auth0.com/`
+Important! The device needs M2M authentication, so it is needed to have a security platform configured at first, e.g.: `https://auth0.com/`
 
 List of required environment variables to add:
 | Environment Variable | Description |
