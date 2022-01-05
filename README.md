@@ -51,7 +51,7 @@ open `/etc/rc.local` and paste the code below, after environment variables setup
 python3 /path-to-repo/WeatherFactorsCollector/src/__main__.py &
 ```
 
-**4. Restart the device **
+**5. Restart the device**
 
 Use `reboot` to restart the device and ensure the script is running by visiting `WeatherFactorsCollector/src/logs` or `WeatherFactorsCollector/src/readings` catalog.
 It should be created a new file, with the current datetime in the each directory.
